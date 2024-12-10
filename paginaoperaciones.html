@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Operaciones</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Asegura que el body ocupe al menos toda la altura de la ventana */
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            flex: 1; /* Permite que el contenedor crezca y ocupe el espacio disponible */
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background-color: #28a745;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        th:hover {
+            background-color: #218838; /* Cambia el color al pasar el mouse */
+        }
+
+        button {
+            padding: 8px 12px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #218838; /* Color de fondo al pasar el mouse */
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #28a745; /* Color del mensaje */
+            display: none; /* Ocultar por defecto */
+        }
+
+        .copyright {
+            text-align: center; /* Centra el texto */
+            margin-top: 20px; /* Margen superior para separarlo del contenido */
+            color: #777; /* Un color más tenue para el copyright */
+        }
+    </style>
+    <script>
+        function calcularOperacion(tipo) {
+            let precio, cantidad, resultado;
+
+            // Pedir al usuario que ingrese los valores
+            precio = parseFloat(prompt("Ingrese el precio:"));
+            cantidad = parseInt(prompt("Ingrese la cantidad:"));
+
+            if (isNaN(precio) || isNaN(cantidad) || cantidad <= 0) {
+                alert("Por favor, ingrese valores válidos.");
+                return;
+            }
+
+            switch (tipo) {
+                case 'total':
+                    resultado = precio * cantidad;
+                    break;
+                case 'porcentaje':
+                    resultado = precio * 0.30;
+                    break;
+                case 'descuento':
+                    resultado = precio * cantidad * 0.25;
+                    break;
+                default:
+                    resultado = 0;
+            }
+
+            alert("El resultado es: " + resultado);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Página de Operaciones</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>OPERACIÓN</th>
+                    <th>DESCRIPCIÓN</th>
+                    <th>BOTONES</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TOTAL PRODUCTO</td>
+                    <td>Calcula el precio por la cantidad</td>
+                    <td><button onclick="calcularOperacion('total')">Calcular Total</button></td>
+                </tr>
+                <tr>
+                    <td>PORCENTAJE</td>
+                    <td>Calcula el 30% de precio</td>
+                    <td><button onclick="calcularOperacion('porcentaje')">Calcular Porcentaje</button></td>
+                </tr>
+                <tr>
+                    <td>DESCUENTO</td>
+                    <td>Calcula el 25% de descuento de un precio por la cantidad</td>
+                    <td><button onclick="calcularOperacion('descuento')">Calcular Descuento</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Navegación</h2>
+        <div id="navigation">
+            <button onclick="window.location.href='paginaprincipal.html'">Página Principal</button>
+            <button onclick="window.location.href='paginaapi.html'">Página API</button>
+            <button onclick="window.location.href='paginaformulario.html'">Página Formulario</button>
+            <button onclick="window.location.href='paginaoperaciones.html'">Página Operaciones</button>
+        </div>
+    </div>
+    <div class="copyright">
+        © Alberto Guillen - Fernando De La Mora - 2024. Todos los derechos reservados.
+    </div>
+</body>
+</html>
